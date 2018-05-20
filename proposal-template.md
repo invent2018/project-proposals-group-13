@@ -1,30 +1,29 @@
-# Ridiculously Catchy Title
-## Super Catchy Slogan
+# Orientate
+## Ideas for your everyday fashion
 
 Group members: 
-* Apple
-* Banana
-* Char Kway Teow
-
-Feel free to change the headers, but do address the points raised. 
+* Ze Xian
+* Victor 
 
 ## Audience
-Whose problems are we trying to solve?
+Individuals who want to be recommended something to wear based on occasion.
 
 ## Problems
-What problems are people facing?
-How are these already being solved?
+Individuals cannot make up their mind for what to wear because of the huge number of clothes they have
 
 ## Solution
-What’s your solution, in one sentence? 
-Can you find an analogy to describe it? 
+Machine learning software that can recommend good combination of clothes based on what you have in your closet
+
 
 ## Assumptions
-What assumptions are we making that the project depends on?
+People actually want to be recommended something to wear
 
 ## Unique Selling Point
-Our version will succeed because
+Our version will succeed because it will not be based off opinion but rather from general data which more accurately reflect fashion trends
 
 ## Competitors
-What competitors are there? List 5. Surely you can google 5.
-Why are we better or different?
+ClosetSpace
+Stylicious
+Stylebook
+My Dressing
+Closet +
