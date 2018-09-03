@@ -1,38 +1,17 @@
 
-%3/9/18 - CNN - RCNN object detection hopefully this fucking works
+%2/9/18 - ROIcolor region proposal -> CNN identify object 
 
-% 1. download
-% https://drive.google.com/drive/folders/0B7EVK8r0v71pQ2FuZ0k0QnhBQnc 
-% the whole thing, except for img_highres.zip shit in the "img" folder
 
-% 2. download imdsimport.m (script file for matlab) but dunnid open just
-% make sure its added to path (i.e. added to the entire dataset folder somewhere
-
-% 3. just read through the comments of entire script here, and change what
-% is necessary 
-
-% 4. Press run on top but dun if u dont want train u can make last command
-% a comment first
-
-% 5. after you are done, type in this command:
-    %save detector1
- 
-% 6. you should be getting a detector1.mat file in the directory on the
-%left, just somehow send it to me thanks
- 
- 
 clear all
 clc
-addpath(genpath('C:\Users\kai10_000\Desktop\SSD leggo\DATA\Deepfashion')) %add path of where the whole deepfashion data and imdsimport file
-
+addpath(genpath('C:\Users\kai10_000\Desktop\SSD leggo'))
 rootFolder = 'C:\Users\kai10_000\Desktop\SSD leggo\DATA\Deepfashion\In-shop Clothes Retrieval Benchmark\Img';
-%change rootfolder to dir of your In-shop Clothes Retrieval Benchmark\Img file
 
 
 
 %------------------------------Deepfashion importing---------------------------
 global actualdataset;
-imdsimport 
+imdsimport
 disp('imdsdone') 
 
 
@@ -54,7 +33,6 @@ actualdataset = struct2table(actualdataset);
 expression1 = 'img/';
 expression2 = '/id';
 expression3 = '/';
-labellist = num2cell(zeros(height(clothingdataset),1));
 for i = 1 : height(clothingdataset)
     
     str = clothingdataset.imagefilename{i};
@@ -103,11 +81,9 @@ disp('bboxdone')
 disp('datadone')
 %-------------------------data preprocessing for CNN-------------------------
 
-idx1 = floor(0.5 * height(actualdataset));
-idx2 = floor(0.8* height(actualdataset));
+idx1 = floor(0.7 * height(actualdataset));
 trainingData = actualdataset(1:idx1,:);
-validationData = actualdataset(idx1:idx2,:);
-testData = actualdataset(idx2:end,:);
+testData = actualdataset(idx1:end,:);
 
 
 
@@ -119,9 +95,8 @@ options = trainingOptions('sgdm', ...
   'MiniBatchSize', 128, ...
   'InitialLearnRate', 1e-4, ...
   'MaxEpochs', 24);
-%options still not optimised, have to see how things go
 
-[detector1,traininginfo] = trainRCNNObjectDetector(trainingData, vgg16, options); 
-%this is the command to actually train so make this a comment if you dont
-%want to actually train yet^^
+%[trainedNet,traininfo] = trainNetwork(trainingData,layers,options)
+
+[detector1,traininginfo] = trainRCNNObjectDetector(trainingData, vgg16, options);
 
